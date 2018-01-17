@@ -35,8 +35,8 @@
 int main(int argc, char *argv[]) {
 
 	// Local variables
-	float f_evens, f_array[MAX_FLOATS];
-    int i, i_evens, m_array[MAX_INTS];
+	float f_array[MAX_FLOATS];
+    int i, even_floats, even_ints, m_array[MAX_INTS];
 
 	// Step #1 - read in the float numbers to process
 	for (i = 0; i < MAX_FLOATS; i++) {
@@ -62,8 +62,8 @@ int main(int argc, char *argv[]) {
     // TO DO -- IMPLEMENT !!!
 
     // Step #6 - figure out number of evens in each array (float and sorted integer arrays)
-    f_evens = float_evens(f_array);
-    i_evens = integer_evens(m_array);
+    even_floats = float_evens(f_array);
+    even_ints = integer_evens(m_array);
 
     // Step #7 - print the most frequent values from the sorted integer array
     most_values(m_array); 
