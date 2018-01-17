@@ -29,39 +29,50 @@
 //                argv - the parameters
 // Outputs      : 0 if successful test, -1 if failure
 
+#define MAX_FLOATS 20
+#define MAX_INTS 25
+
 int main(int argc, char *argv[]) {
 
 	// Local variables
-	// NOTE: this is where you will want to add some new variables
-	float f_array[20];
-    int i, m_array[25];
-    ????
+	float f_evens, f_array[MAX_FLOATS];
+    int i, i_evens, m_array[MAX_INTS];
 
 	// Step #1 - read in the float numbers to process
-	for (i=0; i<20; i++) {
+	for (i = 0; i < MAX_FLOATS; i++) {
 		scanf("%f", &f_array[i]);
 	}
 
     // Step #2 - convert the floating point values to integers
-    ????
+    for (i = 0; i < MAX_FLOATS; i++) {
+        m_array[i] = (int) f_array[i];
+    }
 
     // Step #3 - print out the integer and floating point arrays
-    ????
+    float_display_array(f_array);
+    integer_display_array(m_array);
     
     // Step #4 - print out the number of '1's in each integer
-    ???? 
+    for (i = 0; i < MAX_INTS; i++) {
+        printf("The integer %d has %d '1' bits in its binary representation",
+            m_array[i], countBits(m_array[i]));
+    }
 
     // Step #5 - Sort the integer array using QuickSort and print the sorted array
-    ????
+    // TO DO -- IMPLEMENT !!!
 
     // Step #6 - figure out number of evens in each array (float and sorted integer arrays)
-    ????
+    f_evens = float_evens(f_array);
+    i_evens = integer_evens(m_array);
 
     // Step #7 - print the most frequent values from the sorted integer array
-    ???? 
+    most_values(m_array); 
 
     // Step #8 - print the integers corresponding to the reverse bit string from integer array
-    ????
+    for (i = 0; i < MAX_INTS; i++) {
+        printf("The integer corresponding to the reverse bit string of %d is %d",
+            m_array[i], reserveBits(m_array[i]));
+    }
 
 	// Return successfully
 	return(0);

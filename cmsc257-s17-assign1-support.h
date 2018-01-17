@@ -26,16 +26,16 @@ int float_evens(float numbers[]);
 int integer_evens(int numbers[]);
 	// Return the number of even numbers in the array (int version)
 
-int countBits(????);  // what type parameter should I use?
+int countBits(int number);  // what type parameter should I use?
 	// Count the number of '1' bits in the binary representation
 
-int most_values(????);  // what type parameter should I use, and do I return the mode?
+int most_values(int values[]);
 	// Print out the values with the most occurences in array
 
-unsigned short reverseBits(????);
+unsigned short reverseBits(int number);
         // Reverse the binary bit string
 
-void binaryString(????);  // does this take int?
+void binaryString(int number);
         // Print the binary equivalent of the number passed
 
 void integerQuickSort(int numbers[]);
