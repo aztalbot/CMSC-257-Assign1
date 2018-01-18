@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "*.aspx": "html",
+        "stdlib.h": "c"
+    }
+}

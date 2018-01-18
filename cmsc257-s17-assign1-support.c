@@ -9,6 +9,11 @@
 //   Last Modified : 1/17/2018
 //
 
+// Include Files
+#include <stdio.h>
+#include <math.h>
+#include <stdlib.h>
+
 // Functional Prototype Include
 #include <cmsc257-s17-assign1-support.h>
 
@@ -49,24 +54,27 @@ int integer_evens(int numbers[], int arr_length) {
     return num_evens;
 }
 
-int countBits(int number);  // what type parameter should I use?
-	// Count the number of '1' bits in the binary representation
+int countBits(int number) {
+    return 1; // TO DO -- IMPLEMENT
+}
 
-int most_values(int values[], int num_elements, int max_value);
-	// Print out the values with the most occurences in array
+int most_values(int values[], int num_elements, int max_value){
+    return 1; // TO DO -- IMPLEMENT
+}
 
-unsigned short reverseBits(int number);
-        // Reverse the binary bit string
+unsigned short reverseBits(int number) {
+    return 1; // TO DO -- IMPLEMENT
+}
 
 void binaryString(char *str_pointer, int length, int number) {
     int quotient = number / 2;
     if (quotient > 0) {
-        binaryString(*str_pointer, length - 1, quotient);
+        binaryString(str_pointer, length - 1, quotient);
     } else {
-        str_pointer = number % 2;
+        str_pointer[0] = number % 2;
     }
     *str_pointer += length;
-    str_pointer = '\0';
+    str_pointer[0] = '\0';
 }
 
 void integerQuickSort(int numbers[], int left, int right);

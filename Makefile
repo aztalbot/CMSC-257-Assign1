@@ -5,7 +5,8 @@
 
 # Make environment
 INCLUDES=-I.
-CC=gcc
+# CC=gcc  # for Unix
+CC=clang  # for macOS
 CFLAGS=-I. -c -g -Wall $(INCLUDES)
 LINKARGS=-lm
 LIBS=-lm
