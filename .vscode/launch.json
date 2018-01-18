@@ -8,7 +8,7 @@
             "name": "(lldb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceRoot}/a.out",
+            "program": "${workspaceRoot}/cmsc257-s17-assign1",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
