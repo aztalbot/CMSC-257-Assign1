@@ -58,8 +58,16 @@ int most_values(int values[], int num_elements, int max_value);
 unsigned short reverseBits(int number);
         // Reverse the binary bit string
 
-void binaryString(char *str_pointer, int length, int number);
-        // Print the binary equivalent of the number passed
+void binaryString(char *str_pointer, int length, int number) {
+    int quotient = number / 2;
+    if (quotient > 0) {
+        binaryString(*str_pointer, length - 1, quotient);
+    } else {
+        str_pointer = number % 2;
+    }
+    *str_pointer += length;
+    str_pointer = '\0';
+}
 
 void integerQuickSort(int numbers[], int left, int right);
         // Sort the integer array using QuickSort algorithm

@@ -37,6 +37,7 @@ int main(int argc, char *argv[]) {
 	// Local variables
 	float f_array[MAX_FLOATS];
     int i, even_floats, even_ints, m_array[MAX_INTS];
+    char binary_str[sizeof(int) * 8];
 
 	// Step #1 - read in the float numbers to process
 	for (i = 0; i < MAX_FLOATS; i++) {
@@ -49,8 +50,8 @@ int main(int argc, char *argv[]) {
     }
 
     // Step #3 - print out the integer and floating point arrays
-    float_display_array(f_array);
-    integer_display_array(m_array);
+    float_display_array(f_array, MAX_FLOATS);
+    integer_display_array(m_array, MAX_INTS);
     
     // Step #4 - print out the number of '1's in each integer
     for (i = 0; i < MAX_INTS; i++) {
@@ -62,16 +63,16 @@ int main(int argc, char *argv[]) {
     // TO DO -- IMPLEMENT !!!
 
     // Step #6 - figure out number of evens in each array (float and sorted integer arrays)
-    even_floats = float_evens(f_array);
-    even_ints = integer_evens(m_array);
+    even_floats = float_evens(f_array, MAX_FLOATS);
+    even_ints = integer_evens(m_array, MAX_INTS);
 
     // Step #7 - print the most frequent values from the sorted integer array
-    most_values(m_array); 
+    most_values(m_array, MAX_INTS, m_array[MAX_INTS - 1]); 
 
     // Step #8 - print the integers corresponding to the reverse bit string from integer array
     for (i = 0; i < MAX_INTS; i++) {
         printf("The integer corresponding to the reverse bit string of %d is %d",
-            m_array[i], reserveBits(m_array[i]));
+            m_array[i], reverseBits(m_array[i]));
     }
 
 	// Return successfully
