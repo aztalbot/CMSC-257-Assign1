@@ -66,15 +66,24 @@ unsigned short reverseBits(int number) {
     return 1; // TO DO -- IMPLEMENT
 }
 
-void binaryString(char *str_pointer, int length, int number) {
-    int quotient = number / 2;
-    if (quotient > 0) {
-        binaryString(str_pointer, length - 1, quotient);
-    } else {
-        str_pointer[0] = number % 2;
-    }
-    *str_pointer += length;
-    str_pointer[0] = '\0';
+void binaryString(char *ptr, int len, int num) {
+  // ** CONVERTS ANY INT TO BINARY STRING **
+    /// position determines index from end of string
+  int position = len[0];
+    /// we keep dividing by two until we reach 0
+	int quotient = num / 2;
+	if (quotient > 0) {
+	    //// increment position from end of string
+	  len[0]++;
+		binaryString(ptr, len, quotient); // recursive call
+	}
+	  /// when we reach 0 we know the length
+	else {
+		ptr[len[0] + 1] = '\0'; // null terminate string
+	}
+	
+	char bit = (num % 2) + '0'; // remainder as char
+	ptr[len[0] - position] = bit; // place char at correct index
 }
 
 void integerQuickSort(int numbers[], int left, int right);
