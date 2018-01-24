@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "(lldb) Launch",
+            "name": "LLDB Launch",
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceRoot}/cmsc257-s17-assign1",
@@ -13,7 +13,7 @@
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
-            "externalConsole": false,
+            "externalConsole": true,
             "MIMode": "lldb"
         }
     ]
