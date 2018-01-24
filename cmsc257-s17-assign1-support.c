@@ -107,7 +107,7 @@ int partition(int *ptr, int lo, int hi) {
  return i + 1;
 }
 
-void integerQuickSort(int *numbers, int left, int right) {
+void integerQuicksort(int *numbers, int left, int right) {
 	if(left < right) {
 		int p = partition(numbers, left, right);
 		integerQuicksort(numbers, left, p - 1);
