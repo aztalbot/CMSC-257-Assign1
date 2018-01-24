@@ -66,7 +66,7 @@ unsigned short reverseBits(int number) {
     return 1; // TO DO -- IMPLEMENT
 }
 
-void binaryString(char *ptr, int len, int num) {
+void binaryString(char *ptr, int *len, int num) {
   // ** CONVERTS ANY INT TO BINARY STRING **
     /// position determines index from end of string
   int position = len[0];
@@ -86,24 +86,34 @@ void binaryString(char *ptr, int len, int num) {
 	ptr[len[0] - position] = bit; // place char at correct index
 }
 
-void integerQuickSort(int numbers[], int left, int right);
-        // Sort the integer array using QuickSort algorithm
-        // algorithm quicksort(A, lo, hi) is
-        //     if lo < hi then
-        //         p := partition(A, lo, hi)
-        //         quicksort(A, lo, p - 1 )
-        //         quicksort(A, p + 1, hi)
+void swap(int *ptr, int a, int b) {
+	int temp = ptr[a];
+	ptr[a] = ptr[b];
+	ptr[b] = temp;
+}
 
-        // algorithm partition(A, lo, hi) is
-        //     pivot := A[hi]
-        //     i := lo - 1    
-        //     for j := lo to hi - 1 do
-        //         if A[j] < pivot then
-        //             i := i + 1
-        //             swap A[i] with A[j]
-        //     if A[hi] < A[i + 1] then
-        //         swap A[i + 1] with A[hi]
-        //     return i + 1
+int partition(int *ptr, int lo, int hi) {
+ int pivot = ptr[hi];
+ int i = lo - 1;    
+ int j;
+ for (j = lo; j < hi; j++) {
+ 	if (ptr[j] < pivot) {
+      swap(ptr, ++i, j);
+   }
+ }
+ if (ptr[hi] < ptr[i + 1]) {
+   	swap(ptr, i + 1, hi);
+ }
+ return i + 1;
+}
+
+void integerQuickSort(int *numbers, int left, int right) {
+	if(left < right) {
+		int p = partition(numbers, left, right);
+		integerQuicksort(numbers, left, p - 1);
+		integerQuicksort(numbers, p + 1, right);
+	}
+}
         
 
 // END FUNCTION IMPLEMENTATIONS
