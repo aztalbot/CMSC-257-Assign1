@@ -38,6 +38,12 @@ unsigned short reverseBits(int number);
 void binaryString(char *str_pointer, int *length, int number);
         // Print the binary equivalent of the number passed
 
+void swap(int *ptr, int a, int b);
+	// Swap the values of two different array integers
+
+int partition(int *ptr, int lo, int hi);
+	// Parition an array for quicksort
+
 void integerQuickSort(int numbers[], int left, int right);
         // Sort the integer array using QuickSort algorithm
         

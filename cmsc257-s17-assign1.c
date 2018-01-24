@@ -55,12 +55,15 @@ int main(int argc, char *argv[]) {
     
     // Step #4 - print out the number of '1's in each integer
     for (i = 0; i < MAX_INTS; i++) {
-        printf("The integer %d has %d '1' bits in its binary representation",
+        printf("The integer %d has %d '1' bits in its binary representation.\n",
             m_array[i], countBits(m_array[i]));
     }
 
     // Step #5 - Sort the integer array using QuickSort and print the sorted array
-    // TO DO -- IMPLEMENT !!!
+    int *arr_ptr = m_array;
+    integerQuickSort(arr_ptr, 0, MAX_INTS);
+    integer_display_array(m_array, MAX_INTS);
+
 
     // Step #6 - figure out number of evens in each array (float and sorted integer arrays)
     even_floats = float_evens(f_array, MAX_FLOATS);
