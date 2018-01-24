@@ -35,7 +35,7 @@ int most_values(int values[], int num_elements, int max_value);
 unsigned short reverseBits(int number);
         // Reverse the binary bit string
 
-void binaryString(char *str_pointer, int length, int number);
+void binaryString(char *str_pointer, int *length, int number);
         // Print the binary equivalent of the number passed
 
 void integerQuickSort(int numbers[], int left, int right);
