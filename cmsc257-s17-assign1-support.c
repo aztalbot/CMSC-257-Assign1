@@ -55,7 +55,17 @@ int integer_evens(int numbers[], int arr_length) {
 }
 
 int countBits(int number) {
-    return 1; // TO DO -- IMPLEMENT
+    char binary_str[sizeof(int) * 8];
+    char *bin_str_ptr = &binary_str[0];
+    int len = 0;
+    int *len_ptr = &len;
+    binaryString(bin_str_ptr, len_ptr, number);
+    int i, counter;
+    counter = 0;
+    for (i = 0; i < (int) sizeof(int) * 8; i++) {
+        if (binary_str[i] == '1') { counter++; }
+    }
+    return counter;
 }
 
 int most_values(int values[], int num_elements, int max_value){
@@ -63,7 +73,18 @@ int most_values(int values[], int num_elements, int max_value){
 }
 
 unsigned short reverseBits(int number) {
-    return 1; // TO DO -- IMPLEMENT
+    char binary_str[sizeof(int) * 8];
+    char *bin_str_ptr = &binary_str[0];
+    int len = 0;
+    int *len_ptr = &len;
+    binaryString(bin_str_ptr, len_ptr, number);
+    int i;
+    unsigned short reverse_int = 0;
+    for (i = 0; i < (int) sizeof(int) * 8; i++) {
+        int current_int = (int) binary_str[i];
+        reverse_int += current_int * (2^i);
+    }
+    return reverse_int;
 }
 
 void binaryString(char *ptr, int *len, int num) {
