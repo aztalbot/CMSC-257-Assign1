@@ -37,15 +37,15 @@ int main(int argc, char *argv[]) {
 
 	// Step #1 - read in the float numbers to process
     printf("\n\n## STEP 1 -- ENTER %d FLOATS\n", MAX_FLOATS);
-	for (i = 0; i < MAX_FLOATS; i++) {
+	for (i = 0; i < MAX_FLOATS; i++)
 		scanf("%f", &f_array[i]);
-	}
 
     // Step #2 - convert the floating point values to integers
+    int converted, shifted, absolute;
     for (i = 0; i < MAX_FLOATS; i++) {
-        int converted = (int) f_array[i];   // cast to int
-        int shifted = converted >> 31;  // step 1 to convert to absolute value (using bitwise)
-        int absolute = (shifted ^ converted) - shifted; // step 2 to convert to absolute value
+        converted = (int) f_array[i];   // cast to int
+        shifted = converted >> 31;  // step 1 to convert to absolute value (using bitwise)
+        absolute = (shifted ^ converted) - shifted; // step 2 to convert to absolute value
         m_array[i] = absolute & 15; // fit in range between 0 - 15, bitwise mod
     }
 
@@ -64,8 +64,7 @@ int main(int argc, char *argv[]) {
 
     // Step #5 - Sort the integer array using QuickSort and print the sorted array
     printf("\n\n## STEP 5 -- SORTED INTEGERS\n");
-    int *arr_ptr = m_array;
-    integerQuickSort(arr_ptr, 0, MAX_FLOATS - 1);
+    integerQuickSort(m_array, 0, MAX_FLOATS - 1);
     integer_display_array(m_array, MAX_FLOATS);
 
 

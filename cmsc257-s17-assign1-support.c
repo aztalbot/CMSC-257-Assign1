@@ -27,7 +27,7 @@
 //                arrLength - integer length of array
 // Outputs      : 0 if successful test, -1 if failure
 int float_display_array(float *values, int arrLength) {
-    // iterate over array and print out floats
+    // iterate over array and print out floats with even display width
     for (int i = 0; i < arrLength; i++)
         printf("%6.2f%s", values[i], (i == arrLength - 1) ? "" : ", ");
     printf("\n");
@@ -41,7 +41,7 @@ int float_display_array(float *values, int arrLength) {
 //                arrLength - integer length of array
 // Outputs      : 0 if successful test, -1 if failure
 int integer_display_array(int *values, int arrLength) {
-    // iterate over array and print out integers
+    // iterate over array and print out integers with even display width
     for (int i = 0; i < arrLength; i++)
         printf("%3d%s", values[i], (i == arrLength - 1) ? "" : ", ");
     printf("\n");
@@ -91,11 +91,11 @@ int countBits(int number) {
     // COUNTS 1 BITS IN BINARY STRING
     int i, len, counter;
     len = 33; // int (4 bytes) plus null terminator
-    char binaryStr[sizeof(int) * len];
+    char binaryStr[len];
     // fill binaryStr with binary representation of number
     binaryString((char*) &binaryStr, len, number);
     counter = 0;
-    for(i = 0; i < (int) sizeof(int) * len; i++) {
+    for(i = 0; i < len; i++) {
         if(binaryStr[i] == '1')
             counter++; // increment counter for each '1'
     }
@@ -113,27 +113,29 @@ int most_values(int *values, int numElements, int maxValue){
     // Assumes sorted array, iterates through and counts freq of values
     // need to allocate an array in case no distinct mode
     int *mostValues = malloc(sizeof(int) * numElements);
-    int i, mostFreq, currentVal, numModes, lastIndex, seenMax; // we keep track of these -- initially 0
-    for(i = 1, lastIndex = mostFreq = numModes = seenMax = 0;
-            (i <= numElements && !seenMax); i++) {
-        currentVal = values[i - 1]; // set the currentValue for the next comparison
-        int isMax = currentVal == maxValue; // if maxValue is only the last index, we don't care
+    int i, mostFreq, currentVal, numModes, lastIndex, isMax; // we keep track of these
+    lastIndex = mostFreq = numModes = isMax = 0; // -- initially 0
+    for(i = 1; i <= numElements && !isMax; i++) {
+        currentVal = values[i - 1]; // set the currentValue to the previous in array
+        isMax = currentVal == maxValue; // if maxValue is only the last index, we don't care
         // loop until we reach the maxValue - because we know that's last
         if(values[i] != currentVal || isMax) { // we reached the next value
-            int freq = (isMax) ? (numElements - (i - 1)) : i - lastIndex; // freq of the last value we saw
+            int freq = (isMax)
+                ? (numElements - (i - 1))
+                : i - lastIndex; // freq of the last value we saw
             freq = (freq == 0) ? 1 : freq;
             lastIndex = i; // where that last value is
-            if(freq - mostFreq >= 1) { // did it occur more than the current mode?
+            if(freq - mostFreq >= 1) { // occurred more than the current mode?
                 mostFreq = freq; // replace the current mode
                 numModes = 1; // pretend array has one item
                 mostValues[numModes - 1] = currentVal;
-            } else if(freq - mostFreq == 0) { // same freq as current mode?
+            } else if(freq - mostFreq == 0) { // same freq as current mode
                 numModes++; // add it to the array
                 mostValues[numModes - 1] = currentVal;
             }
-            seenMax = (isMax) ? 1 : 0;
         }
     }
+    // print out the values in the array and free the memory
     for(i = 0; i < numModes; i++)
       printf("%d%s", mostValues[i], ((i == numModes - 1) ? "" : ", "));
     free(mostValues);
@@ -151,9 +153,9 @@ unsigned short int reverseBits(unsigned short int number) {
     int i, j, len;
     unsigned short int reverseInt = 0;
     len = 17; // short (2 bytes) plus null terminator
-    char binaryStr[sizeof(int) * len];
+    char binaryStr[len];
     // generate binary string of number
-    binaryString((char*) &binaryStr, len, number);
+    binaryString(binaryStr, len, number);
     for(i = 0, j = 1; i < len - 1; i++, j <<= 1) // multiply j by 2 bitwise each iter
         reverseInt += (binaryStr[i] & 1) * j;
     return reverseInt;
@@ -172,8 +174,9 @@ void binaryString(char *ptr, int len, int num) {
   int start, numBits, i;
   ptr[len - 1] = '\0'; // terminate string at end of array
   if (num == 0) {
+    // if 0 the string is all 0s
     for(i = len - 2; i >= 0; i--) {
-      ptr[i] = 0 + '0'; // if 0 return all 0s
+      ptr[i] = 0 + '0';
     }
   } else {
     // get number of bits required to express the given number
@@ -220,15 +223,14 @@ int partition(int *ptr, int lo, int hi) {
   pivot = ptr[hi];
   i = lo - 1;    
   for (j = lo; j < hi; j++) {
-   if (ptr[j] < pivot) {
+   if (ptr[j] < pivot)
       swap(&ptr[++i], &ptr[j]);
-   }
   }
-  if (ptr[hi] < ptr[i + 1]) {
+  if (ptr[hi] < ptr[i + 1])
    	swap(&ptr[i + 1], &ptr[hi]);
-  }
   return i + 1;
 } // end partition
+
 // END QUICKSORT HELPER FUNCTIONS
 // ------------------------------
 
